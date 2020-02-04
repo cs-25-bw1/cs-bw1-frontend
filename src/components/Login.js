@@ -3,6 +3,7 @@ import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import { signIn } from "../store/auth/actions";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   return (
@@ -12,6 +13,11 @@ const LoginForm = () => {
       <label>password</label>
       <Field placeholder="password" name="password" type="text" />
       <button type="submit">Login</button>
+
+      <div>
+        <p>Not yet registered?</p>
+        <Link to="/register">Sign Up</Link>
+      </div>
     </Form>
   );
 };
