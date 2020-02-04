@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { initWorld } from '../store/app/actions'
 
 const World = props => {
+  console.log('useEffect:::', props)
   useEffect(() => {
     props.initWorld()
   }, [])
@@ -17,7 +18,7 @@ const World = props => {
 
 const mapStateToProps = state => {
   return {
-    player: state.player,
+    world: state.world,
     error: state.error,
   }
 }

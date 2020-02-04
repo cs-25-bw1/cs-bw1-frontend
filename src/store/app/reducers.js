@@ -24,7 +24,7 @@ switch(type) {
       error: "",
       isLoading: false,
       // check payload
-      player: payload,
+      world: payload,
       // room: payload.room
     };
   case INIT_FAILURE:
