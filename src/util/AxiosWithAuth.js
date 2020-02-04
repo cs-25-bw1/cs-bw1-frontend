@@ -6,9 +6,10 @@ const axiosWithAuth = type => {
   const apiUrl = "https://cs25-llamas.herokuapp.com";
 
   let key;
-  if (type == "auth") {
+
+  if (type === "auth") {
     key = "X-CSRFToken";
-  } else if (type == "app") {
+  } else if (type === "app") {
     key = "Authorization";
   }
 

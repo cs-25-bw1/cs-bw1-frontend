@@ -1,4 +1,11 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } from "./types";
+import {
+  LOGIN_START,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  REGISTER_START,
+  REGISTER_SUCCESS,
+  REGISTER_FAILURE
+} from "./types";
 
 const initialState = {
   error: "",
@@ -34,9 +41,37 @@ export const signIn = (state = initialState, action) => {
     case LOGIN_FAILURE:
       return {
         ...state,
-        error: "",
         isLoading: false,
         error: payload
+      };
+
+    default:
+      return state;
+  }
+};
+
+export const register = (state = initialState, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case REGISTER_START:
+      return {
+        ...state,
+        isLoading: true
+      };
+    case REGISTER_SUCCESS:
+      return {
+        error: "",
+        isAuth: true,
+        token: payload.key,
+        isLoading: false,
+        users: [...state.users, payload]
+      };
+
+    case REGISTER_FAILURE:
+      return {
+        ...state,
+        error: payload,
+        isLoading: false
       };
 
     default:
