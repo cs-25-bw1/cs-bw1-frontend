@@ -3,7 +3,7 @@ import axios from "axios";
 const axiosWithAuth = type => {
   const token = localStorage.getItem("token");
   // const apiUrl = process.env.DB_URL
-  const apiUrl = "http://cs25-llamas.herokuapp.com";
+  const apiUrl = "https://cs25-llamas.herokuapp.com";
 
   let key;
   if (type == "auth") {
