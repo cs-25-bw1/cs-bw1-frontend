@@ -1,7 +1,13 @@
-import React from "react";
+import React from 'react'
+import World from './World'
 
 function Home() {
-  return <h1>HOME </h1>;
+  return (
+    <div>
+      <h1>HOME </h1>
+      <World />
+    </div>
+  )
 }
 
-export default Home;
+export default Home
