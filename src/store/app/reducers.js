@@ -1,40 +1,37 @@
-import { INIT_START, INIT_FAILURE, INIT_SUCCESS } from './types'
+import { INIT_START, INIT_SUCCESS, INIT_FAILURE } from "./types";
 
 const initialState = {
   error: "",
-  world: {},
-  // rooms: {},
+  world: [],
   isLoading: false,
-  isSuccess: false,
-}
+  isSuccess: false
+};
 
-export const start (state = initialState, action) => {
-const { type, payload } = action;
-switch(type) {
-  case INIT_START:
-    return {
-      ...state,
-      error: "",
-      isLoading:true
-    }
-  case INIT_SUCCESS:
-    console.log('THIS IS THE PAYLOAD FOR INIT::::', payload)
-    return {
-      ...state,
-      error: "",
-      isLoading: false,
-      // check payload
-      world: payload,
-      // room: payload.room
-    };
-  case INIT_FAILURE:
-    return {
-      ...state,
-      isLoading: false,
-      error: payload
-    }
-  
+export const start = (state = initialState, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case INIT_START:
+      return {
+        ...state,
+        error: "",
+        isLoading: true
+      };
+    case INIT_SUCCESS:
+      // console.log("this is the payload", payload);
+      return {
+        ...state,
+        error: "",
+        isLoading: false,
+        world: payload.data
+      };
+    case INIT_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: payload.error
+      };
+
     default:
       return state;
-}
-}
+  }
+};

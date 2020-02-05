@@ -1,26 +1,36 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
-import { initWorld } from '../store/app/actions'
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { initWorld } from "../store/app/actions";
 
 const World = props => {
-  console.log('useEffect:::', props)
   useEffect(() => {
-    props.initWorld()
-  }, [])
+    props.initWorld();
+  }, []);
+
+  const { title, name, description, players } = props.world;
   return (
-    <div>
-      {console.log('world -- props', props)}
-      <h1>{props.name}</h1>
-      <h2>{props.title}</h2>
-    </div>
-  )
-}
+    <>
+      <div>
+        <h3>Player name: </h3>
+        <p>{name}</p>
+      </div>
+      <div>
+        <h3>Current Room</h3>
+        <p>{title}</p>
+        <p>{description}</p>
+      </div>
+
+      <div>
+        <h5>Players</h5>
+      </div>
+    </>
+  );
+};
 
 const mapStateToProps = state => {
   return {
-    world: state.world,
-    error: state.error,
-  }
-}
+    ...state.world
+  };
+};
 
-export default connect(mapStateToProps, { initWorld })(World)
+export default connect(mapStateToProps, { initWorld })(World);

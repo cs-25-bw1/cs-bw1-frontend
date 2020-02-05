@@ -29,7 +29,6 @@ export const signIn = (state = initialState, action) => {
         isLoading: true
       };
     case LOGIN_SUCCESS:
-      console.log("this is the playload", payload);
       return {
         ...state,
         isAuth: true,
