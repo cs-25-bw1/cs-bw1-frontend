@@ -9,13 +9,14 @@ import thunk from "redux-thunk";
 
 //reducer
 import { signIn } from "./auth/reducers";
-import { start } from "./app/reducers";
+import { start, move } from "./app/reducers";
 
 const middleware = [thunk];
 
 const reducer = combineReducers({
   signIn,
-  world: start
+  world: start,
+  move: move
 });
 
 const composeEnhancers =
