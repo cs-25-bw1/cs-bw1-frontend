@@ -5,7 +5,7 @@ import Controller from "./Controller";
 import Map from "./Map";
 
 const World = props => {
-  const { title, name, description, players } = props.world;
+  const { title, name, description, players, items } = props.world;
 
   // const [location, setLocation] = useState([]);
 
@@ -19,22 +19,30 @@ const World = props => {
 
   return (
     <div className="worldDiv">
-      <div className="playerDiv">
-        <h3>Player name: </h3>
-        <p>{name}</p>
-      </div>
-      <div className="roomDiv">
-        <h3>Current Room</h3>
-        <p>{title}</p>
-        <p>{description}</p>
+      <div className="sideDiv">
+        <div className="playerDiv">
+          <h3>Player name: </h3>
+          <p>{name}</p>
+        </div>
+        <div className="roomDiv">
+          <h3>Current Room</h3>
+          <p>{title}</p>
+          <p>{description}</p>
+          <div className="itemsDiv">
+            <p>Items in this room</p>
+            <p>{items}</p>
+          </div>
+        </div>
+        <div className="playersDiv">
+          <h5>Players</h5>
+          <p>{players}</p>
+        </div>
+        <Controller />
       </div>
 
-      <Controller />
       <Map />
-
       <div>
-        <h5>Players</h5>
-        <p>{players}</p>
+        <h1>hello</h1>
       </div>
     </div>
   );
@@ -42,7 +50,7 @@ const World = props => {
 
 const mapStateToProps = state => {
   return {
-    ...state.world
+    ...state.start
   };
 };
 

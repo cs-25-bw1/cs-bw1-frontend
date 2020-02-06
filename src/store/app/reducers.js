@@ -1,7 +1,7 @@
 import {
-  INIT_START,
-  INIT_SUCCESS,
-  INIT_FAILURE,
+  INIT_PLAYER_START,
+  INIT_PLAYER_SUCCESS,
+  INIT_PLAYER_FAILURE,
   MOVE_PLAYER_START,
   MOVE_PLAYER_SUCCESS,
   MOVE_PLAYER_FAILURE,
@@ -21,19 +21,19 @@ const initialState = {
 export const start = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case INIT_START:
+    case INIT_PLAYER_START:
       return {
         ...state,
         isLoading: true
       };
-    case INIT_SUCCESS:
+    case INIT_PLAYER_SUCCESS:
       // console.log("this is the payload", payload);
       return {
         ...state,
         isLoading: false,
         world: payload.data
       };
-    case INIT_FAILURE:
+    case INIT_PLAYER_FAILURE:
       return {
         ...state,
         isLoading: false,

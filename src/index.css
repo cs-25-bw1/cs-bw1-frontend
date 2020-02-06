@@ -27,9 +27,10 @@ code {
 .worldDiv {
   /* margin: 0 auto; */
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   align-items: center;
   border: 2px solid black;
+  background-image: url("./assets/b.jpg");
 }
 
 .rv-xy-plot {
@@ -47,6 +48,19 @@ code {
   border: 15px solid green;
 }
 
+.playersDiv {
+  border: 15px solid purple;
+}
+
 .roomDiv {
   border: 15px solid blue;
+}
+
+.itemsDiv {
+}
+
+.imageDiv {
+}
+
+.sideDiv {
 }

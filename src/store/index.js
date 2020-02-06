@@ -15,7 +15,7 @@ const middleware = [thunk];
 
 const reducer = combineReducers({
   signIn,
-  world: start,
+  start: start,
   move: move,
   map: map
 });
