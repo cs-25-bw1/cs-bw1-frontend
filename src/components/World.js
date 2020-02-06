@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { initWorld } from "../store/app/actions";
 import Controller from "./Controller";
+import Map from "./Map";
 
 const World = props => {
-  const [location, setLocation] = useState(props);
-  const { title, name, description, players } = props.world;
+  const { title, name, description } = props.world;
 
   useEffect(() => {
-    props.initWorld();
-    setLocation(props.world);
-  }, [location]);
+    // props.initWorld();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
@@ -25,6 +25,7 @@ const World = props => {
       </div>
       <div>
         <Controller />
+        <Map />
       </div>
 
       <div>
