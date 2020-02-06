@@ -16,6 +16,7 @@ import {
 } from "react-vis";
 
 const Map = props => {
+  console.log("map props:::::::", props);
   useEffect(() => {
     props.getMap();
     // propsMovePlayer();
@@ -27,6 +28,8 @@ const Map = props => {
   const coordinates = [];
   const links = [];
   const room_data = props.map;
+  const currentRoom = [];
+  currentRoom.push(props.location);
   // Loop through each room in the room_data object
   for (let room in room_data) {
     // Set data equal to the first element (x, y coordinates)
@@ -47,26 +50,37 @@ const Map = props => {
       ]);
     }
   }
+  console.log("testing", typeof currentRoom);
 
   return (
     <div className="mapDiv">
       <FlexibleXYPlot width={600} height={600}>
         {links.map(link => (
           <LineSeries
-            strokeWidth="2"
+            strokeWidth="3"
             color="green"
             data={link}
             key={Math.random() * 100}
           />
         ))}
-        <MarkSeries
-          //   current={this.props.currentRoom}
+        {/* <MarkSeries
+          current={this.props.location}
           highlight="#1b00ff"
           strokeWidth={3}
           opacity="1"
-          size="3"
+          size="5"
           color="green"
           data={coordinates}
+          style={{ cursor: "pointer" }}
+        /> */}
+        <MarkSeries
+          // current={currentRoom}
+          highlight="#1b00ff"
+          strokeWidth={3}
+          opacity="1"
+          size="5"
+          color="red"
+          // data={currentRoom}
           style={{ cursor: "pointer" }}
         />
       </FlexibleXYPlot>

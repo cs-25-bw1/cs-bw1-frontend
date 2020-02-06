@@ -5,7 +5,7 @@ import Controller from "./Controller";
 import Map from "./Map";
 
 const World = props => {
-  const { title, name, description, players, items } = props.world;
+  const { title, name, description, players, items, location } = props.world;
 
   // const [location, setLocation] = useState([]);
 
@@ -14,8 +14,6 @@ const World = props => {
     props.initWorld();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log("this si the init", props.world);
 
   return (
     <div className="worldDiv">
@@ -30,7 +28,9 @@ const World = props => {
           <p>{description}</p>
           <div className="itemsDiv">
             <p>Items in this room</p>
+
             <p>{items}</p>
+            {/* <p>{location}</p> */}
           </div>
         </div>
         <div className="playersDiv">
@@ -40,9 +40,9 @@ const World = props => {
         <Controller />
       </div>
 
-      <Map />
-      <div>
-        <h1>hello</h1>
+      <Map location={location} />
+      <div className="imageDiv">
+        <h1>maybe show pic here?</h1>
       </div>
     </div>
   );
