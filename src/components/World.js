@@ -1,14 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { initWorld, movePlayer } from "../store/app/actions";
+import { initWorld } from "../store/app/actions";
 import Controller from "./Controller";
 
 const World = props => {
+  const [location, setLocation] = useState(props);
+  const { title, name, description, players } = props.world;
+
   useEffect(() => {
     props.initWorld();
-  }, [props.world]);
+    setLocation(props.world);
+  }, [location]);
 
-  const { title, name, description, players } = props.world;
   return (
     <div>
       <div>
