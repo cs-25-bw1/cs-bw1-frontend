@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
 import { getMap } from "../store/app/actions";
 import { connect } from "react-redux";
 import room_data from "../util/example-room";
@@ -17,6 +18,7 @@ import {
 const Map = props => {
   useEffect(() => {
     props.getMap();
+    // propsMovePlayer();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -24,14 +26,14 @@ const Map = props => {
   //   console.log("this is the map props", getPosition);
   const coordinates = [];
   const links = [];
-
+  const room_data = props.map;
   // Loop through each room in the room_data object
-  //   for (let room in room_data) {
-  //     // Set data equal to the first element (x, y coordinates)
-  //     // in each room of the room_data object
-  //     let data = room_data[room][0];
-  //     coordinates.push(data);
-  //   }
+  for (let room in room_data) {
+    // Set data equal to the first element (x, y coordinates)
+    // in each room of the room_data object
+    let data = room_data[room][0];
+    coordinates.push(data);
+  }
 
   for (let room in room_data) {
     // Set data equal to the first element (x, y coordinates)
@@ -47,7 +49,7 @@ const Map = props => {
   }
 
   return (
-    <>
+    <div className="mapDiv">
       <FlexibleXYPlot width={600} height={600}>
         {links.map(link => (
           <LineSeries
@@ -68,21 +70,9 @@ const Map = props => {
           style={{ cursor: "pointer" }}
         />
       </FlexibleXYPlot>
-    </>
+    </div>
   );
 };
-
-/***
- *     {coordinates.map(location => {
-          <LineSeries
-            strokeWidth="2"
-            color="#FF0"
-            data={location}
-            key={Math.random() * 100}
-          />;
-        })}
- */
-
 const mapStateToProps = state => {
   return {
     ...state.map

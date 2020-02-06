@@ -7,7 +7,7 @@ import { register } from "../store/auth/actions";
 
 const RegistrationForm = () => {
   return (
-    <>
+    <div className="regForm">
       <Form>
         <label>username</label>
         <Field type="text" placeholder="username" name="username" />
@@ -17,7 +17,7 @@ const RegistrationForm = () => {
         <Field type="type" placeholder="confirm password" name="password2" />
         <button type="submit">register</button>
       </Form>
-    </>
+    </div>
   );
 };
 

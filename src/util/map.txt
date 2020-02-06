@@ -493,3 +493,13 @@ loop each index
     }
   ]
 }
+
+
+
+{
+  "001": [{"x": 1,"y": 8}, {"e": 457}, {"title": "Room 001"}, {"description": "Lorem Ipsoum "}, {"items": []}], 
+  "002": [{"x": 1,"y": 20}, {"e": 400}, {"title": "Room 002"}, {"description": "Lorem Ipsoum "}, {"items": ["Pinky"]}], 
+  "003": [{"x": 2,"y": 5}, {"e": 478}, {"title": "Room 003"}, {"description": "Lorem Ipsoum "}, {"items": ["Inky"]}], 
+  "004": [{"x": 2,"y": 8}, {"e": 355, "w": 494}, {"title": "Room 004"}, {"description": "Lorem Ipsoum west "}, {"items": ["power pellet"]}]
+}
+
