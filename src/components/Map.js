@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { getMap } from "../store/app/actions";
+import { getMap, initWorld } from "../store/app/actions";
 import { connect } from "react-redux";
 import { FlexibleXYPlot, LineSeries, MarkSeries } from "react-vis";
 
@@ -16,6 +16,10 @@ const Map = props => {
     setLocation(props.player.location);
   }, [props.player]);
 
+  useEffect(() => {
+    props.initWorld();
+  }, [props, props.player]);
+
   const coordinates = [];
   const links = [];
   const room_data = props.map;
@@ -30,7 +34,7 @@ const Map = props => {
       JSON.stringify(location) === JSON.stringify(data)
     ) {
       currentRoom.push(data);
-      console.log("this is working a little", location, data);
+      // console.log("this is working a little", location, data);
     }
   }
 
@@ -88,4 +92,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getMap })(Map);
+export default connect(mapStateToProps, { getMap, initWorld })(Map);
