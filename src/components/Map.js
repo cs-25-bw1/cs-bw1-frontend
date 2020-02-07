@@ -29,12 +29,10 @@ const Map = props => {
     let data = room_data[room][0];
     coordinates.push(data);
 
-    if (
-      location !== undefined &&
-      JSON.stringify(location) === JSON.stringify(data)
-    ) {
-      currentRoom.push(data);
-      // console.log("this is working a little", location, data);
+    if (location !== undefined) {
+      if (JSON.stringify(location) === JSON.stringify(data)) {
+        currentRoom.push(data);
+      }
     }
   }
 
