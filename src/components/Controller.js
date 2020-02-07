@@ -13,14 +13,14 @@ const Controller = props => {
           props.movePlayer("n");
         }}
       >
-        N
+        S
       </Button>
       <Button
         onClick={() => {
           props.movePlayer("s");
         }}
       >
-        S
+        N
       </Button>
       <Button
         onClick={() => {
