@@ -17,33 +17,34 @@ const World = props => {
     movePlayer();
   }, [props.player]);
 
-  console.log("this is the world", props.player);
-
-  return (
-    <div className="worldDiv">
-      <div className="sideDiv">
-        <div className="playerDiv">
-          <h3>Player name: </h3>
-          <p>{name}</p>
-        </div>
-        <div className="roomDiv">
-          <h3>Current Room</h3>
-          <p>{title}</p>
-          <p>{description}</p>
-          <div className="itemsDiv">
-            <p>Items in this room</p>
+  if (props.player !== undefined || items !== undefined) {
+    return (
+      <div className="worldDiv">
+        <div className="sideDiv">
+          <div className="playerDiv">
+            <h3>Player name: </h3>
+            <p>{name}</p>
           </div>
+          <div className="roomDiv">
+            <h3>Current Room</h3>
+            <p>{title}</p>
+            <p>{description}</p>
+            <div className="itemsDiv">
+              <h3>Items in this room</h3>
+              {items}
+            </div>
+          </div>
+          <div className="playersDiv">
+            <h5>Players</h5>
+            <p>{players}</p>
+          </div>
+          <Controller />
         </div>
-        <div className="playersDiv">
-          <h5>Players</h5>
-          <p>{players}</p>
-        </div>
-        <Controller />
-      </div>
 
-      <Map location={location} />
-    </div>
-  );
+        <Map location={location} />
+      </div>
+    );
+  }
 };
 
 const mapStateToProps = state => {
