@@ -51,23 +51,14 @@ const Map = props => {
           data={coordinates}
           style={{ cursor: "pointer" }}
         />
-        {/* <MarkSeries
-          // current={currentRoom}
-          highlight="#1b00ff"
-          strokeWidth={3}
-          opacity="1"
-          size="5"
-          color="blue"
-          data={{ x: 2, y: 3 }}
-          style={{ cursor: "pointer" }}
-        /> */}
       </FlexibleXYPlot>
     </div>
   );
 };
 const mapStateToProps = state => {
   return {
-    ...state.map
+    map: state.gameReducer.map,
+    player: state.gameReducer.player
   };
 };
 

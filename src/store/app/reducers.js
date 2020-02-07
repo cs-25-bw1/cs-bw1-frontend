@@ -12,14 +12,13 @@ import {
 
 const initialState = {
   error: "",
-  world: [],
   map: {},
-  currentLocation: [],
+  player: {},
   isLoading: false,
   isSuccess: false
 };
 
-export const start = (state = initialState, action) => {
+export const gameReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case INIT_PLAYER_START:
@@ -31,7 +30,7 @@ export const start = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        world: payload.data
+        player: payload.data
         //
       };
     case INIT_PLAYER_FAILURE:
@@ -41,38 +40,23 @@ export const start = (state = initialState, action) => {
         error: payload.error
       };
 
-    default:
-      return state;
-  }
-};
-
-export const move = (state = initialState, action) => {
-  const { type, payload } = action;
-  switch (type) {
     case MOVE_PLAYER_START:
       return {
         ...state,
         isLoading: true
       };
+
     case MOVE_PLAYER_SUCCESS:
       return {
         ...state,
         isLoading: false,
-        world: payload.data
+        player: payload.data
       };
     case MOVE_PLAYER_FAILURE:
       return {
         ...state,
         error: payload.error
       };
-    default:
-      return state;
-  }
-};
-
-export const map = (state = initialState, action) => {
-  const { type, payload } = action;
-  switch (type) {
     case GET_MAP_START:
       return {
         ...state,

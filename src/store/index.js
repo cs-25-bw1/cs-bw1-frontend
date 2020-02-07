@@ -9,15 +9,13 @@ import thunk from "redux-thunk";
 
 //reducer
 import { signIn } from "./auth/reducers";
-import { start, move, map } from "./app/reducers";
+import { gameReducer } from "./app/reducers";
 
 const middleware = [thunk];
 
 const reducer = combineReducers({
   signIn,
-  start: start,
-  move: move,
-  map: map
+  gameReducer
 });
 
 const composeEnhancers =
