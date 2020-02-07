@@ -1,0 +1,61 @@
+.intro {
+  padding: 5rem;
+  background-color: #090909;
+  height: 100vh;
+
+  h1 {
+    color: white;
+    padding: 2rem 0;
+  }
+  p {
+    color: white;
+  }
+}
+
+.form {
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+
+  .label {
+    padding: 2rem 0;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .field {
+    width: 50%;
+    align-self: center;
+    padding: 1rem;
+  }
+
+  button {
+    width: 50%;
+    align-self: center;
+    margin-top: 5rem;
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: rgb(176, 174, 174);
+    text-transform: uppercase;
+
+    &:hover,
+    &:active {
+      background-color: #90ee90;
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+}
+
+p {
+  margin: 2rem 0;
+}
+
+.signup {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 1rem 1.5rem;
+  background-color: #90ee90;
+}

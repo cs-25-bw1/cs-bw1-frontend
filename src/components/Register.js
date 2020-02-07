@@ -4,20 +4,39 @@ import { connect } from "react-redux";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import { register } from "../store/auth/actions";
+import "./register.scss";
 
 const RegistrationForm = () => {
   return (
-    <div className="regForm">
-      <Form>
-        <label>username</label>
-        <Field type="text" placeholder="username" name="username" />
-        <label>password</label>
-        <Field type="type" placeholder="password" name="password1" />
-        <label>confirm password</label>
-        <Field type="type" placeholder="confirm password" name="password2" />
-        <button type="submit">register</button>
-      </Form>
-    </div>
+    <>
+      <div className="intro">
+        <h1>Welcome to the Adventure Game!</h1>
+        <Form className="form">
+          <label className="label">username</label>
+          <Field
+            className="field"
+            type="text"
+            placeholder="username"
+            name="username"
+          />
+          <label className="label">password</label>
+          <Field
+            className="field"
+            type="type"
+            placeholder="password"
+            name="password1"
+          />
+          <label className="label">confirm password</label>
+          <Field
+            className="field"
+            type="type"
+            placeholder="confirm password"
+            name="password2"
+          />
+          <button type="submit">register</button>
+        </Form>
+      </div>
+    </>
   );
 };
 

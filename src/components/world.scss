@@ -1,0 +1,50 @@
+.world {
+  background-color: rgb(52, 52, 52);
+  display: flex;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  margin: 1rem;
+  overflow: hidden;
+
+  .playerDiv {
+    background-color: white;
+    opacity: 0.9;
+    overflow: hidden;
+  }
+
+  .map div {
+    display: flex;
+    justify-content: center;
+    margin-top: 10rem;
+    border: 2px solid #90ee90;
+  }
+
+  .rv-xy-plot {
+    border: 2px solid #90ee90;
+    align-self: center;
+  }
+}
+
+.logoutDiv {
+  margin: 5rem 0;
+
+  .logout {
+    padding: 2rem 5rem;
+    margin: 5rem 0;
+    background: rgb(52, 52, 52);
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    &:hover,
+    &:active {
+      background-color: green;
+      color: white;
+    }
+  }
+}

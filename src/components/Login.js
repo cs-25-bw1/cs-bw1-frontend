@@ -4,21 +4,31 @@ import * as Yup from "yup";
 import { signIn } from "../store/auth/actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import "./login.scss";
 
 const LoginForm = () => {
   return (
-    <Form>
-      <label>username</label>
-      <Field placeholder="username" name="username" type="text" />
-      <label>password</label>
-      <Field placeholder="password" name="password" type="text" />
-      <button type="submit">Login</button>
-
-      <div>
-        <p>Not yet registered?</p>
-        <Link to="/register">Sign Up</Link>
+    <>
+      <div className="intro">
+        <h1> Welcome to the Adventure Game!</h1>
+        <div>
+          <Form className="form">
+            <label className="label">username</label>
+            <br />
+            <Field className="field" name="username" type="text" />
+            <label className="label">password</label>
+            <Field className="field" name="password" type="password" />
+            <button type="submit">Login</button>
+          </Form>
+        </div>
+        <div>
+          <p>Not yet registered?</p>
+          <Link className="signup" to="/register">
+            Sign Up
+          </Link>
+        </div>
       </div>
-    </Form>
+    </>
   );
 };
 

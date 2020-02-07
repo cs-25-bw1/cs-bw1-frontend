@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { initWorld, movePlayer } from "../store/app/actions";
 import Controller from "./Controller";
 import Map from "./Map";
+import "./world.scss";
+import { Link } from "react-router-dom";
 
 const World = props => {
   /** varaibles */
@@ -18,30 +20,39 @@ const World = props => {
   }, [props.player]);
 
   return (
-    <div className="worldDiv">
-      <div className="sideDiv">
-        <div className="playerDiv">
-          <h3>Player name: </h3>
-          <p>{name}</p>
+    <>
+      <div className="world">
+        <div className="map">
+          <Map location={location} />
         </div>
-        <div className="roomDiv">
-          <h3>Current Room</h3>
-          <p>{title}</p>
-          <p>{description}</p>
-          <div className="itemsDiv">
+        <div className="side">
+          <div className="playerDiv">
+            <h3>Player name: </h3>
+            <p>{name}</p>
+            <h3>Current Room</h3>
+            <p>{title}</p>
+            <h3>Description</h3>
+            <p>{description}</p>
             <h3>Items in this room</h3>
             {items}
+            <h3>Players</h3>
+            <p>{players}</p>
+          </div>
+          <div>
+            <Controller />
           </div>
         </div>
-        <div className="playersDiv">
-          <h5>Players</h5>
-          <p>{players}</p>
-        </div>
-        <Controller />
       </div>
-
-      <Map location={location} />
-    </div>
+      <div className="logoutDiv">
+        <Link
+          to="/"
+          className="logout"
+          onClick={() => localStorage.removeItem("token")}
+        >
+          Logout
+        </Link>
+      </div>
+    </>
   );
 };
 
