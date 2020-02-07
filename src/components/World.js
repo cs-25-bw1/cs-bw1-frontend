@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { initWorld } from "../store/app/actions";
+import { initWorld, movePlayer } from "../store/app/actions";
 import Controller from "./Controller";
 import Map from "./Map";
 
 const World = props => {
   const { title, name, description, players, items, location } = props.world;
-
-  // const [location, setLocation] = useState([]);
-
+  const [startLocation, setStartLocation] = useState([]);
   useEffect(() => {
     // console.log("useeffect props", props);
     props.initWorld();
+    // setStartLocation(props.move);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [startLocation]);
+
+  useEffect(() => {
+    movePlayer();
+    setStartLocation(props);
+  }, [props.title]);
 
   return (
     <div className="worldDiv">
@@ -28,7 +32,6 @@ const World = props => {
           <p>{description}</p>
           <div className="itemsDiv">
             <p>Items in this room</p>
-
             <p>{items}</p>
             {/* <p>{location}</p> */}
           </div>
@@ -41,16 +44,14 @@ const World = props => {
       </div>
 
       <Map location={location} />
-      <div className="imageDiv">
-        <h1>maybe show pic here?</h1>
-      </div>
     </div>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    ...state.start
+    ...state.start,
+    ...state.move
   };
 };
 

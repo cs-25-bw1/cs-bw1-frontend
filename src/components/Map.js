@@ -2,45 +2,24 @@ import React, { useEffect, useState } from "react";
 
 import { getMap } from "../store/app/actions";
 import { connect } from "react-redux";
-import room_data from "../util/example-room";
-import {
-  XAxis,
-  YAxis,
-  VerticalGridLines,
-  XYPlot,
-  FlexibleXYPlot,
-  HorizontalGridLines,
-  LineMarkSeries,
-  LineSeries,
-  MarkSeries
-} from "react-vis";
+import { FlexibleXYPlot, LineSeries, MarkSeries } from "react-vis";
 
 const Map = props => {
-  console.log("map props:::::::", props);
   useEffect(() => {
     props.getMap();
-    // propsMovePlayer();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-nextd-line react-hooks/exhaustive-deps
   }, []);
 
-  //   const getPosition = props.map;
-  //   console.log("this is the map props", getPosition);
   const coordinates = [];
   const links = [];
   const room_data = props.map;
-  const currentRoom = [];
-  currentRoom.push(props.location);
-  // Loop through each room in the room_data object
+
   for (let room in room_data) {
-    // Set data equal to the first element (x, y coordinates)
-    // in each room of the room_data object
     let data = room_data[room][0];
     coordinates.push(data);
   }
 
   for (let room in room_data) {
-    // Set data equal to the first element (x, y coordinates)
-    // in each room of the room_data object
     let data = room_data[room][0];
     coordinates.push(data);
     for (let adjacentRoom in room_data[room][1]) {
@@ -50,7 +29,6 @@ const Map = props => {
       ]);
     }
   }
-  console.log("testing", typeof currentRoom);
 
   return (
     <div className="mapDiv">
@@ -63,16 +41,6 @@ const Map = props => {
             key={Math.random() * 100}
           />
         ))}
-        {/* <MarkSeries
-          current={this.props.location}
-          highlight="#1b00ff"
-          strokeWidth={3}
-          opacity="1"
-          size="5"
-          color="green"
-          data={coordinates}
-          style={{ cursor: "pointer" }}
-        /> */}
         <MarkSeries
           // current={currentRoom}
           highlight="#1b00ff"
@@ -80,9 +48,19 @@ const Map = props => {
           opacity="1"
           size="5"
           color="red"
-          // data={currentRoom}
+          data={coordinates}
           style={{ cursor: "pointer" }}
         />
+        {/* <MarkSeries
+          // current={currentRoom}
+          highlight="#1b00ff"
+          strokeWidth={3}
+          opacity="1"
+          size="5"
+          color="blue"
+          data={{ x: 2, y: 3 }}
+          style={{ cursor: "pointer" }}
+        /> */}
       </FlexibleXYPlot>
     </div>
   );

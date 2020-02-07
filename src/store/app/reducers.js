@@ -14,6 +14,7 @@ const initialState = {
   error: "",
   world: [],
   map: {},
+  currentLocation: [],
   isLoading: false,
   isSuccess: false
 };
@@ -27,11 +28,11 @@ export const start = (state = initialState, action) => {
         isLoading: true
       };
     case INIT_PLAYER_SUCCESS:
-      // console.log("this is the payload", payload);
       return {
         ...state,
         isLoading: false,
         world: payload.data
+        //
       };
     case INIT_PLAYER_FAILURE:
       return {
