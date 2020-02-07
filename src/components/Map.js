@@ -49,7 +49,7 @@ const Map = props => {
 
   // console.log("testing", currentRoom);
   return (
-    <div className="mapDiv">
+    <>
       <FlexibleXYPlot width={600} height={600}>
         {links.map(link => (
           <LineSeries
@@ -65,7 +65,7 @@ const Map = props => {
           strokeWidth={3}
           opacity="1"
           size="5"
-          color="green"
+          color="#90ee90"
           data={coordinates}
           style={{ cursor: "pointer" }}
         />
@@ -80,7 +80,7 @@ const Map = props => {
           style={{ cursor: "pointer" }}
         />
       </FlexibleXYPlot>
-    </div>
+    </>
   );
 };
 const mapStateToProps = state => {

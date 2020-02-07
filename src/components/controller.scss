@@ -1,0 +1,15 @@
+.btn {
+  padding: 1.5rem;
+  font-size: 1rem;
+  font-style: bold;
+  font-weight: bolder;
+  background-color: yellowgreen;
+  color: black;
+  margin: 1rem;
+
+  &:hover,
+  &:active {
+    background-color: green;
+    color: white;
+  }
+}

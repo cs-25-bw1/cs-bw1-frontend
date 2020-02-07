@@ -1,54 +1,52 @@
 import React from "react";
 import { connect } from "react-redux";
 import { movePlayer } from "../store/app/actions";
-import styled from "styled-components";
+import "./controller.scss";
 
 const Controller = props => {
   console.log("this is the props", props);
   return (
     <div className="NavButtonDiv">
-      <Button
-        // style={{ color: "green", backgroundColor: "red", fontSize: "4rem" }}
-        onClick={() => {
-          props.movePlayer("n");
-        }}
-      >
-        S
-      </Button>
-      <Button
-        onClick={() => {
-          props.movePlayer("s");
-        }}
-      >
-        N
-      </Button>
-      <Button
-        onClick={() => {
-          props.movePlayer("e");
-        }}
-      >
-        E
-      </Button>
-      <Button
-        onClick={() => {
-          props.movePlayer("w");
-        }}
-      >
-        W
-      </Button>
+      <div>
+        <button
+          className="btn"
+          onClick={() => {
+            props.movePlayer("s");
+          }}
+        >
+          N
+        </button>
+      </div>
+      <div>
+        <button
+          className="btn"
+          onClick={() => {
+            props.movePlayer("w");
+          }}
+        >
+          W
+        </button>
+        <button
+          className="btn"
+          onClick={() => {
+            props.movePlayer("e");
+          }}
+        >
+          E
+        </button>
+      </div>
+      <div>
+        <button
+          className="btn btn-n"
+          onClick={() => {
+            props.movePlayer("n");
+          }}
+        >
+          S
+        </button>
+      </div>
     </div>
   );
 };
-
-const Button = styled.button`
-  color: green;
-  background: lightgrey;
-  border: 2px green;
-  font-size: 4rem;
-  :hover {
-    color: blue;
-    cursor: pointer;
-  }
-`;
 
 export default connect(null, { movePlayer })(Controller);
