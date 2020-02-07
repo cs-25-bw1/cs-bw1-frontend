@@ -1,13 +1,66 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.regForm {
+  border: 2px solid black;
+}
+
+.mapDiv {
+  border: 2px solid black;
+  /* margin: 0 auto; */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.worldDiv {
+  /* margin: 0 auto; */
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  border: 2px solid black;
+  background-image: url("./assets/b.jpg");
+}
+
+.rv-xy-plot {
+  display: flex;
+  align-items: center;
+  border: 3px solid blue;
+}
+
+.NavButtonDiv {
+  border: 2px solid black;
+  margin-bottom: 10px;
+}
+
+.playerDiv {
+  border: 15px solid green;
+}
+
+.playersDiv {
+  border: 15px solid purple;
+}
+
+.roomDiv {
+  border: 15px solid blue;
+}
+
+.itemsDiv {
+}
+
+.imageDiv {
+}
+
+.sideDiv {
 }

@@ -1,42 +1,56 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { initWorld } from "../store/app/actions";
+import { initWorld, movePlayer } from "../store/app/actions";
 import Controller from "./Controller";
+import Map from "./Map";
 
 const World = props => {
-  const [location, setLocation] = useState(props);
-  const { title, name, description, players } = props.world;
+  /** varaibles */
+  const { name, title, description, location, items, players } = props.player;
 
   useEffect(() => {
     props.initWorld();
-    setLocation(props.world);
-  }, [location]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  return (
-    <div>
-      <div>
-        <h3>Player name: </h3>
-        <p>{name}</p>
-      </div>
-      <div>
-        <h3>Current Room</h3>
-        <p>{title}</p>
-        <p>{description}</p>
-      </div>
-      <div>
-        <Controller />
-      </div>
+  useEffect(() => {
+    movePlayer();
+  }, [props.player]);
 
-      <div>
-        <h5>Players</h5>
+  if (props.player !== undefined || items !== undefined) {
+    return (
+      <div className="worldDiv">
+        <div className="sideDiv">
+          <div className="playerDiv">
+            <h3>Player name: </h3>
+            <p>{name}</p>
+          </div>
+          <div className="roomDiv">
+            <h3>Current Room</h3>
+            <p>{title}</p>
+            <p>{description}</p>
+            <div className="itemsDiv">
+              <h3>Items in this room</h3>
+              {items}
+            </div>
+          </div>
+          <div className="playersDiv">
+            <h5>Players</h5>
+            <p>{players}</p>
+          </div>
+          <Controller />
+        </div>
+
+        <Map location={location} />
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 const mapStateToProps = state => {
   return {
-    ...state.world
+    map: state.gameReducer.map,
+    player: state.gameReducer.player
   };
 };
 
