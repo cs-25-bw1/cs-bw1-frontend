@@ -1,49 +1,59 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 
-import { getMap, initWorld } from "../store/app/actions";
-import { connect } from "react-redux";
-import { FlexibleXYPlot, LineSeries, MarkSeries } from "react-vis";
+import { getMap, initWorld } from '../store/app/actions'
+import { connect } from 'react-redux'
+import { FlexibleXYPlot, LineSeries, MarkSeries } from 'react-vis'
 
 const Map = props => {
-  const [location, setLocation] = useState({});
+  const [location, setLocation] = useState({})
 
   useEffect(() => {
-    props.getMap();
+    props.getMap()
     // eslint-disable-nextd-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
+
+  // useEffect(() => {
+  //   setLocation(props.player.location)
+  // }, [props.player])
+
+  // useEffect(() => {
+  //   setLocation(props.player.location)
+  //   console.log('***************** useeffect props1', props)
+  // }, [props.player])
+
+  // useEffect(() => {
+  //   setLocation(props.player)
+  //   console.log('***************** useeffect props2', props)
+  // }, [props.player])
 
   useEffect(() => {
-    setLocation(props.player.location);
-  }, [props.player]);
+    props.initWorld()
+  }, [props, props.player])
 
-  useEffect(() => {
-    props.initWorld();
-  }, [props, props.player]);
-
-  const coordinates = [];
-  const links = [];
-  const room_data = props.map;
-  const currentRoom = [];
+  const coordinates = []
+  const links = []
+  const room_data = props.map
+  const currentRoom = []
 
   for (let room in room_data) {
-    let data = room_data[room][0];
-    coordinates.push(data);
+    let data = room_data[room][0]
+    coordinates.push(data)
 
     if (location !== undefined) {
       if (JSON.stringify(location) === JSON.stringify(data)) {
-        currentRoom.push(data);
+        currentRoom.push(data)
       }
     }
   }
 
   for (let room in room_data) {
-    let data = room_data[room][0];
-    coordinates.push(data);
+    let data = room_data[room][0]
+    coordinates.push(data)
     for (let adjacentRoom in room_data[room][1]) {
       links.push([
         room_data[room][0],
-        room_data[room_data[room][1][adjacentRoom]][0]
-      ]);
+        room_data[room_data[room][1][adjacentRoom]][0],
+      ])
     }
   }
 
@@ -53,41 +63,41 @@ const Map = props => {
       <FlexibleXYPlot width={600} height={600}>
         {links.map(link => (
           <LineSeries
-            strokeWidth="3"
-            color="green"
+            strokeWidth='3'
+            color='green'
             data={link}
             key={Math.random() * 100}
           />
         ))}
         <MarkSeries
           current={props.player.title}
-          highlight="#1b00ff"
+          highlight='#1b00ff'
           strokeWidth={3}
-          opacity="1"
-          size="5"
-          color="#90ee90"
+          opacity='1'
+          size='5'
+          color='#90ee90'
           data={coordinates}
-          style={{ cursor: "pointer" }}
+          style={{ cursor: 'pointer' }}
         />
         <MarkSeries
           current={1}
-          highlight="#1b00ff"
+          highlight='#1b00ff'
           strokeWidth={3}
-          opacity="1"
-          size="5"
-          color="red"
+          opacity='1'
+          size='5'
+          color='red'
           data={currentRoom}
-          style={{ cursor: "pointer" }}
+          style={{ cursor: 'pointer' }}
         />
       </FlexibleXYPlot>
     </>
-  );
-};
+  )
+}
 const mapStateToProps = state => {
   return {
     map: state.gameReducer.map,
-    player: state.gameReducer.player
-  };
-};
+    player: state.gameReducer.player,
+  }
+}
 
-export default connect(mapStateToProps, { getMap, initWorld })(Map);
+export default connect(mapStateToProps, { getMap, initWorld })(Map)
